@@ -2,6 +2,7 @@ var amtPerSec = 3075.64;
 
 
 const mutation = ["         Unmutated", "              Soft", "         Breathed", "            Hard", "         Mixed", "Mixed after 'th'"];
+const mutationT = ["First State","Second State: Lentition","Third State: Aspirate","Fourth State","Fifth State","After 'th'"]
 const letters = ["B", "Ch", "D", "G (a, e, i, y)", "G (l, r)", "Gw", "G (o, u, ro, ru)", "K", "M", "P", "T"];  
 const mutations = [
 ['B','V','','P','F','V'],
@@ -234,7 +235,7 @@ default:
 return '';// d;
 }
 }
-
+//to do combine calls to get label and tooltip from 2D array
 function getMutation(d){
 
 switch(d){
@@ -261,6 +262,34 @@ default:
 return '';
 }
 }
+
+function getMutationTooltip(d){
+
+switch(d){
+case 56:
+return mutationT[0];
+break;
+case 54:
+return mutationT[1];
+break;
+case 52:
+return mutationT[2];
+break;
+case 50:
+return mutationT[3];
+break;
+case 48:
+return mutationT[4];
+break;
+case 46:
+return mutationT[5];
+break;
+
+default:
+return '';
+}
+}
+
 
 /* FIX - curved text labels
 //mutation-label
@@ -327,7 +356,10 @@ face.selectAll('mutation-label')
 			return -mR * Math.cos(mutationScale(d) * radians) - 185;
 		},
 		fill: 'yellow'
-	});
+	})
+.append("svg:title")
+	.text(function(d) {return getMutationTooltip(d); }) 
+;
 
 
 
