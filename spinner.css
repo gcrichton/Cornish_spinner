@@ -58,20 +58,37 @@ white-space: pre-wrap;
 color: #0D47A1;
 }
 
-@media (pointer: coarse), (hover: none) {
-      [title] {
-        position: relative;
-        display: inline-flex;
-        justify-content: center;
-      }
-      [title]:focus::after {
-        content: attr(title);
-        position: absolute;
-        top: 90%;
-        color: #000;
-        background-color: #fff;
-        border: 1px solid;
-        width: fit-content;
-        padding: 3px;
-      }
-    }
+/*mobile click tooltip*/
+.mutation-label {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+}
+
+.mutation-label .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+}
+
+.mutation-label:hover .tooltiptext {
+  visibility: visible;
+}
+
+.mutation-label {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}

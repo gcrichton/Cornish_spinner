@@ -2,7 +2,7 @@ var amtPerSec = 3075.64;
 
 
 const mutation = ["         Unmutated", "              Soft", "         Breathed", "            Hard", "         Mixed", "Mixed after 'th'"];
-const mutationT = ["First State","Second State: Lentition","Third State: Aspirate","Fourth State","Fifth State","After 'th'"]
+const mutationT = ["First State","Second State: Lenition","Third State: Aspirate","Fourth State","Fifth State","After 'th'"]
 const letters = ["B", "Ch", "D", "G (a, e, i, y)", "G (l, r)", "Gw", "G (o, u, ro, ru)", "K", "M", "P", "T"];  
 const mutations = [
 ['B','V','','P','F','V'],
@@ -355,10 +355,16 @@ face.selectAll('mutation-label')
 		y: function(d) {
 			return -mR * Math.cos(mutationScale(d) * radians) - 185;
 		},
-		fill: 'yellow'
+		fill: 'yellow'//,
+//	onclick : "mClick(this)"
+
 	})
 .append("svg:title")
-	.text(function(d) {return getMutationTooltip(d); }) 
+	.text(function(d) {return getMutationTooltip(d); })
+.attr({
+	class: 'tooltiptext'
+})
+ 
 ;
 
 
